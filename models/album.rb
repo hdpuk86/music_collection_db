@@ -56,4 +56,12 @@ attr_accessor :artist_id, :title, :genre
     return albums
   end
 
+  def artist()
+    sql = "SELECT * FROM artists WHERE id = $1;"
+    values = [@artist_id]
+    result = SqlRunner.run(sql, "artist", values)
+    artist = result[0]
+    return artist
+  end
+
 end
