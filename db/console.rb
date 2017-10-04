@@ -10,6 +10,14 @@ artist1 = Artist.new({
 
 artist1.save()
 
+album1 = Album.new({
+  'artist_id' => artist1.id(),
+  'title' => 'Electric Ladyland',
+  'genre' => 'Psychedelic Rock'
+  })
+
+album1.save()
+
 # artist1.name = 'Papa Roach'
 # artist1.update()
 
