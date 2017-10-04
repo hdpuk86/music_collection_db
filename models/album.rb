@@ -21,4 +21,17 @@ attr_accessor :artist_id, :title, :genre
     @id = result[0]['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE albums SET (artist_id, title, genre) = ($1, $2, $3)
+    WHERE id = $4;"
+    values = [@artist_id, @title, @genre, @id]
+    SqlRunner.run(sql, "update_album", values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM albums;"
+    values = []
+    SqlRunner.run(sql, "delete_all_albums", values)
+  end
+
 end
