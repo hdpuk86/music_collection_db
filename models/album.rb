@@ -34,4 +34,26 @@ attr_accessor :artist_id, :title, :genre
     SqlRunner.run(sql, "delete_all_albums", values)
   end
 
+  def delete()
+    sql = "DELETE FROM albums WHERE id = $1;"
+    values = [@id]
+    SqlRunner.run(sql, "delete_album", values)
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM albums WHERE id = $1;"
+    values = [id]
+    result = SqlRunner.run(sql, "find_album", values)
+    album = result.map {|album| Album.new(album)}
+    return album
+  end
+
+  def self.all()
+    sql = "SELECT * FROM albums;"
+    values = []
+    results = SqlRunner.run(sql, "show_all_albums", values)
+    albums = results.map {|album| Album.new(album)}
+    return albums
+  end
+
 end

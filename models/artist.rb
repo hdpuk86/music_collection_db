@@ -43,8 +43,16 @@ class Artist
     return artist
   end
 
+  def self.all()
+    sql = "SELECT * FROM artists;"
+    values = []
+    results = SqlRunner.run(sql, "show_all_artists", values)
+    artists = results.map {|artist| Artist.new(artist)}
+    return artists
+  end
+
   def albums()
-    
+
   end
 
 end
