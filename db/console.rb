@@ -33,8 +33,5 @@ album1.save()
 album2.save()
 album3.save()
 
-# artist1.name = 'Papa Roach'
-# artist1.update()
-
 binding.pry
 nil
